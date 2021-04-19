@@ -1,7 +1,7 @@
 ﻿namespace BilVerksted
 {
-    public interface ICarToBeRepaired : ICar, ICarDammage
+    public interface ICarToBeRepaired : IVehicleToBeRepaired
     {
-
+        
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace BilVerksted
 {
-    public interface ICarDammage
+    public interface IVehicleDamage
     {
         public string Damage { get; set; }
     }

@@ -1,6 +1,6 @@
 ﻿namespace BilVerksted
 {
-    public interface ICar
+    public interface IVehicle
     {
         public string License { get; set; }
         public string Brand { get; set; }
