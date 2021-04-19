@@ -15,9 +15,8 @@ namespace BilVerksted
             VehicleInWorkshop = _scheduler.DeliverVehicle();
             if(CheckSchedule(VehicleInWorkshop) )
             {
-                
+                RepairVehicle(VehicleInWorkshop);
             }
-
         }
 
         private bool CheckSchedule(IVehicleToBeRepaired vehicle)
@@ -30,15 +29,28 @@ namespace BilVerksted
             return true;
         }
 
-        private void FIKSVehicle(IVehicleToBeRepaired vehicle)
+        private void RepairVehicle(IVehicleToBeRepaired vehicle)
         {
             Console.WriteLine($"The {vehicle.Model} {vehicle.Brand} with lisens number {vehicle.License} is repairing");
-            Thread.Sleep(CalcRepairTime());
-            Console.WriteLine($"{vehicle.Damage} on {vehicle.Model} {vehicle.Brand} has been fixed.");
+            foreach (var damage in vehicle.Damage)
+            {
+                Thread.Sleep(CalcRepairTime());
+                Console.WriteLine($"{damage} on {vehicle.Model} {vehicle.Brand} has been fixed.");
+            }
         }
         private int CalcRepairTime()
         {
-            return Torsk.Next(1000, 20000);
+            return Torsk.Next(1000, 5000);
+        }
+
+        public void AddVehicle(IVehicleToBeRepaired vehicle)
+        {
+            _scheduler.ScheduleVehicle(vehicle);
+        }
+
+        public void ListSchedule()
+        {
+            _scheduler.ListSchedule();
         }
     }
 }

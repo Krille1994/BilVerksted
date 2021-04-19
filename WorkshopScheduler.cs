@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace BilVerksted
 {
@@ -21,6 +22,14 @@ namespace BilVerksted
         public void RemoveVehicle(IVehicleToBeRepaired vehicle)
         {
             ListOfVehiclesToBeRepaired.Remove(vehicle);
+        }
+
+        public void ListSchedule()
+        {
+            foreach (var vehicleToBeRepaired in ListOfVehiclesToBeRepaired)
+            {
+                Console.WriteLine(vehicleToBeRepaired.GetDescription());
+            }
         }
     }
 }

@@ -6,15 +6,14 @@ namespace BilVerksted
     {
         static void Main(string[] args)
         {
-            var i = new CarLicenseMaker();
-            Console.WriteLine(i.CreateLicense());
-            Console.WriteLine(i.CreateLicense());
-            Console.WriteLine(i.CreateLicense());
-            Console.WriteLine(i.CreateLicense());
-            Console.WriteLine(i.CreateLicense());
-            Console.WriteLine(i.CreateLicense());
-            Console.WriteLine(i.CreateLicense());
-            Console.WriteLine(i.CreateLicense());
+            var workshop = new CommandHandler(new Workshop());
+
+            while (true)
+            {
+                workshop.DisplayCommands();
+                var command = Console.ReadLine();
+                workshop.HandleCommand(command);
+            }
         }
     }
 }
